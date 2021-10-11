@@ -1,5 +1,5 @@
-const PERMISSIONS = require("../../constants/permissions");
-const { cleanFields } = require("./exportUtils");
+const PERMISSIONS = require('../../constants/permissions');
+const { cleanFields } = require('./exportUtils');
 
 async function getData(target, options, userAbility) {
   const { uid, attributes } = target;
@@ -11,6 +11,7 @@ async function getData(target, options, userAbility) {
 
   // Filter content by permissions
   const query = permissionsManager.queryFrom({}, PERMISSIONS.read);
+  query._limit = -1;
 
   const items = await strapi.entityService.find(
     { params: query },
