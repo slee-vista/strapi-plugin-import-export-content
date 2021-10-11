@@ -1,6 +1,6 @@
 {
-  "name": "strapi-plugin-import-export-content",
-  "version": "0.4.1",
+  "name": "sstrapi-import-export",
+  "version": "1.0",
   "description": "This is a plugin for import and export content of collection types.",
   "license": "MIT",
   "strapi": {
@@ -17,9 +17,9 @@
     "prismjs": "^1.23.0",
     "react-simple-code-editor": "^0.11.0"
   },
-  "author": "Edison Peñuela <edisonpe961206@hotmail.com>",
+  "author": "Sung Woo Lee <slee@vistaitgorup.com>",
   "maintainers": [
-    "Edison Peñuela <edisonpe961206@hotmail.com>"
+    "Sung Woo Lee <slee@vistaitgorup.com>"
   ],
   "engines": {
     "node": ">=10.16.0 <=14.x.x",
@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EdisonPeM/strapi-plugin-import-export-content.git"
+    "url": "git+https:/https://github.com/slee-vista/strapi-plugin-import-export-content.git"
   },
   "keywords": [
     "strapi",
@@ -39,7 +39,7 @@
     "content"
   ],
   "bugs": {
-    "url": "https://github.com/EdisonPeM/strapi-plugin-import-export-content/issues"
+    "url": "https://github.com/slee-vista/strapi-plugin-import-export-content/issues"
   },
-  "homepage": "https://github.com/EdisonPeM/strapi-plugin-import-export-content#readme"
+  "homepage": "https://github.com/slee-vista/strapi-plugin-import-export-content#readme"
 }

@@ -1,6 +1,6 @@
-# Strapi plugin import-export-content
+# strapi-import-export
 
-Plugin to import and export content according to user permissions in json or csv format.
+Plugin to import and export content according to user permissions in json or csv format. Removed limit for exports.
 
 ## Installation
 
@@ -50,10 +50,8 @@ npm run build -- --clean
 - Options to export media as ids, urls, full content or full content without formats
 - Options to export relatons as ids or full content
 
-## Author
-
-Edison Peñuela – [@EdisonPeM](https://github.com/EdisonPeM/) – edisonpe961206@hotmail.com
-
 ## Acknowledgments
+
+Initially developed by: Edison Peñuela – [@EdisonPeM](https://github.com/EdisonPeM/) – edisonpe961206@hotmail.com
 
 This plugin has been inspired by the tutorial [How to create an import content plugin](https://strapi.io/blog/how-to-create-an-import-content-plugin-part-1-4)
