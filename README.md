@@ -1,4 +1,4 @@
-# strapi-import-export
+# strapi-import-export-no-limit
 
 Plugin to import and export content according to user permissions in json or csv format. Removed limit for exports.
 

@@ -1,5 +1,5 @@
 {
-  "name": "strapi-plugin-import-export",
+  "name": "strapi-plugin-import-export-no-limit",
   "version": "1.0.0",
   "description": "This is a plugin for import and export content of collection types.",
   "license": "MIT",
@@ -42,5 +42,6 @@
     "url": "https://github.com/slee-vista/strapi-plugin-import-export-content/issues"
   },
   "homepage": "https://github.com/slee-vista/strapi-plugin-import-export-content#readme",
-  "main": "index.js"
+  "main": "index.js",
+  "devDependencies": {}
 }
