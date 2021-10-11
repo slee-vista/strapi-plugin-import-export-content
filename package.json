@@ -1,5 +1,5 @@
 {
-  "name": "@v3distribution/strapi-import-export",
+  "name": "strapi-plugin-import-export",
   "version": "1.0.0",
   "description": "This is a plugin for import and export content of collection types.",
   "license": "MIT",
