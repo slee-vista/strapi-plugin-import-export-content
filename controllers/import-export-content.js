@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-const pluginPkg = require("../package.json");
-const PLUGIN_ID = pluginPkg.name.replace(/^strapi-plugin-/i, "");
+const pluginPkg = require('../package.json');
+const PLUGIN_ID = pluginPkg.name.replace(/^strapi-plugin-/i, '');
 
 function getService(service = PLUGIN_ID) {
   const SERVICES = strapi.plugins[PLUGIN_ID].services;
-  return SERVICES[service];
+  return SERVICES['import-export-content'];
 }
 
-const PERMISSIONS = require("../constants/permissions");
+const PERMISSIONS = require('../constants/permissions');
 
 /**
  * import-export-content.js controller
@@ -24,19 +24,19 @@ module.exports = {
    */
 
   index: async (ctx) => {
-    ctx.send({ message: "ok" }); // Send 200 `ok`
+    ctx.send({ message: 'ok' }); // Send 200 `ok`
   },
 
   preAnalyzeContent: async (ctx) => {
     const { data, type } = ctx.request.body;
     if (!data || !type) {
-      return ctx.throw(400, "Required parameters missing");
+      return ctx.throw(400, 'Required parameters missing');
     }
 
     try {
       const service = getService();
       const data = await service.preAnalyzeContent(ctx);
-      ctx.send({ data, message: "ok" });
+      ctx.send({ data, message: 'ok' });
     } catch (error) {
       console.error(error);
       ctx.throw(406, `could not parse: ${error}`);
@@ -47,7 +47,7 @@ module.exports = {
     const { target, fields, items } = ctx.request.body;
 
     if (!target || !fields || !items) {
-      return ctx.throw(400, "Required parameters missing");
+      return ctx.throw(400, 'Required parameters missing');
     }
 
     const { userAbility } = ctx.state;
@@ -65,10 +65,10 @@ module.exports = {
       ctx.send({
         succesfully,
         message: succesfully
-          ? "All Data Imported"
+          ? 'All Data Imported'
           : results.some((res) => res)
-          ? "Some Items Imported"
-          : "No Items Imported",
+          ? 'Some Items Imported'
+          : 'No Items Imported',
       });
     } catch (error) {
       console.error(error);
@@ -80,7 +80,7 @@ module.exports = {
     const { target, type, options } = ctx.request.body;
 
     if (!target || !type || !options) {
-      return ctx.throw(400, "Required parameters missing");
+      return ctx.throw(400, 'Required parameters missing');
     }
 
     const { userAbility } = ctx.state;
@@ -91,7 +91,7 @@ module.exports = {
     try {
       const service = getService();
       const data = await service.exportItems(ctx);
-      ctx.send({ data, message: "ok" });
+      ctx.send({ data, message: 'ok' });
     } catch (error) {
       console.error(error);
       ctx.throw(406, `could not parse: ${error}`);
