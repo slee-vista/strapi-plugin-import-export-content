@@ -27,7 +27,9 @@ function Layout({ navLinks, children, version }) {
   return (
     <div className='container-fluid' style={{ padding: '18px 30px' }}>
       <PluginHeader
-        title={`Import/Export Content - ${cmsVersion.version} CMS Edition`}
+        title={`Import/Export Content - ${
+          cmsVersion.version ? cmsVersion.version : 'Content'
+        } CMS Edition`}
         description='Import and export CSV and JSON into your Content Types.'
       />
       <div>
