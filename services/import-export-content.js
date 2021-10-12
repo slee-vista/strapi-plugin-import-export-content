@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /**
  * import-export-content.js service
@@ -6,20 +6,24 @@
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
 
-const { getItemsFromContent, getContentFromItems } = require("./contentParser");
-const { analyze } = require("./analyzer");
+const { getItemsFromContent, getContentFromItems } = require('./contentParser');
+const { analyze } = require('./analyzer');
 
-const { mapFieldsToTargetFields } = require("./utils/fieldUtils");
-const { importContent } = require("./importer");
+const { mapFieldsToTargetFields } = require('./utils/fieldUtils');
+const { importContent } = require('./importer');
 const {
   CREATED_BY_ATTRIBUTE,
   UPDATED_BY_ATTRIBUTE,
   PUBLISHED_AT_ATTRIBUTE,
-} = require("../constants/contentTypes");
+} = require('../constants/contentTypes');
 
-const { getData } = require("./exporter");
+const { getData } = require('./exporter');
 
 module.exports = {
+  getVersion: async (ctx) => {
+    return strapi.config.plugins.importExport.version;
+  },
+
   preAnalyzeContent: (ctx) => {
     const { data, type } = ctx.request.body;
     const items = getItemsFromContent({ data, type });
@@ -54,7 +58,7 @@ module.exports = {
     const { userAbility } = ctx.state;
     const exportItems = await getData(target, options, userAbility);
 
-    if (target.kind === "singleType") {
+    if (target.kind === 'singleType') {
       return getContentFromItems({ items: exportItems[0], type });
     } else {
       return getContentFromItems({ items: exportItems, type });

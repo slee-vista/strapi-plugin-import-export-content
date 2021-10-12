@@ -27,6 +27,13 @@ module.exports = {
     ctx.send({ message: 'ok' }); // Send 200 `ok`
   },
 
+  getVersion: async (ctx) => {
+    const service = getService();
+    const data = await service.getVersion(ctx);
+
+    ctx.send({ data });
+  },
+
   preAnalyzeContent: async (ctx) => {
     const { data, type } = ctx.request.body;
     if (!data || !type) {

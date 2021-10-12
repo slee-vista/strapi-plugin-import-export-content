@@ -1,7 +1,5 @@
-require('dotenv').config();
-
 const uniqueIdentifier =
-  process.env.IMPORT_EXPORT_VERSION === 'Product' ? 'SKU' : 'Name';
+  strapi.config.plugins.importExport.version === 'Product' ? 'SKU' : 'Name';
 
 const importToCollectionType = async (uid, item, existingData) => {
   const existingSku = existingData.find(

@@ -2,8 +2,8 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/",
-      "handler": "import-export-content.index",
+      "path": "/get-version",
+      "handler": "import-export-content.getVersion",
       "config": {
         "policies": []
       }

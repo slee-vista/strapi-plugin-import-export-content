@@ -5,46 +5,61 @@
  *
  */
 
-import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
-import Layout from "../../components/Layout";
-// Utils
-import pluginId from "../../pluginId";
+import '../../assets/prismjs.css';
+
+import React, { useEffect, useState } from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
+
+import ExportPage from '../ExportPage';
 // Pages
-import ImportPage from "../ImportPage";
-import ExportPage from "../ExportPage";
+import ImportPage from '../ImportPage';
+import Layout from '../../components/Layout';
+// Utils
+import pluginId from '../../pluginId';
+import { request } from 'strapi-helper-plugin';
+import useContentTypes from '../../hooks/useContentTypes';
 
-import useContentTypes from "../../hooks/useContentTypes";
-
-import "../../assets/prismjs.css";
-
-const pathTo = (uri = "") => `/plugins/${pluginId}/${uri}`;
+const pathTo = (uri = '') => `/plugins/${pluginId}/${uri}`;
 const navLinks = [
   {
-    name: "Import Data",
-    to: pathTo("import"),
+    name: 'Import Data',
+    to: pathTo('import'),
   },
   {
-    name: "Export Data",
-    to: pathTo("export"),
+    name: 'Export Data',
+    to: pathTo('export'),
   },
 ];
 
 function App() {
   const userContentTypes = useContentTypes();
+  const [version, setVersion] = useState('');
+
+  const setCmsVersion = async () => {
+    const { data } = await request(`/${pluginId}/get-version`, {
+      method: 'GET',
+    });
+
+    setVersion(data);
+    console.log('getversion function');
+    console.log(data);
+  };
+  useEffect(() => {
+    setCmsVersion();
+  }, []);
 
   return (
-    <Layout navLinks={navLinks}>
+    <Layout navLinks={navLinks} version={version}>
       <Switch>
-        <Route path={pathTo("import")}>
+        <Route path={pathTo('import')}>
           <ImportPage contentTypes={userContentTypes} />
         </Route>
-        <Route path={pathTo("export")}>
+        <Route path={pathTo('export')}>
           <ExportPage contentTypes={userContentTypes} />
         </Route>
         <Route>
           {/* Default Route Retur to Import Page */}
-          <Redirect to={pathTo("import")} />
+          <Redirect to={pathTo('import')} />
         </Route>
       </Switch>
     </Layout>

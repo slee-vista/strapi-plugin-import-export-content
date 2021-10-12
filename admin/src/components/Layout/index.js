@@ -3,7 +3,7 @@ import React, { memo } from 'react';
 
 import PropTypes from 'prop-types';
 
-const version = {
+const CMSversion = {
   edition: `${
     process.env.IMPORT_EXPORT_VERSION
       ? process.env.IMPORT_EXPORT_VERSION
@@ -17,11 +17,17 @@ const version = {
       : 'Name',
 };
 
-function Layout({ navLinks, children }) {
+function Layout({ navLinks, children, version }) {
+  const cmsVersion = {
+    version: version,
+    uniqueIdentifier:
+      version === 'Product' ? 'SKU' : version === 'Content' ? 'Name' : 'Name',
+  };
+
   return (
     <div className='container-fluid' style={{ padding: '18px 30px' }}>
       <PluginHeader
-        title={`Import/Export Content - ${version.edition}`}
+        title={`Import/Export Content - ${cmsVersion.version} CMS Edition`}
         description='Import and export CSV and JSON into your Content Types.'
       />
       <div>
@@ -33,7 +39,7 @@ function Layout({ navLinks, children }) {
         </p>
         <p>
           This feature is built to update or create documents based on whether a
-          column named <strong>"{version.uniqueIdentifier}"</strong> can be
+          column named <strong>"{cmsVersion.uniqueIdentifier}"</strong> can be
           found in the Content Type. This will be further developed so that the
           unique identifying column can be selected during import.
         </p>
@@ -49,7 +55,7 @@ function Layout({ navLinks, children }) {
               parentheses, etc.
             </li>
             <li>
-              The <strong>{version.uniqueIdentifier}</strong> field must be
+              The <strong>"{cmsVersion.uniqueIdentifier}"</strong> field must be
               unique.
             </li>
             <li>Make sure the encoding type of the CSV is utf-8</li>
@@ -74,6 +80,7 @@ Layout.defaultProps = {
 Layout.propTypes = {
   navLinks: PropTypes.arrayOf(PropTypes.object),
   children: PropTypes.any,
+  version: PropTypes.string,
 };
 
 export default memo(Layout);
