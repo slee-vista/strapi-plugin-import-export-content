@@ -2,9 +2,6 @@ import { HeaderNav, PluginHeader } from 'strapi-helper-plugin';
 import React, { memo } from 'react';
 
 import PropTypes from 'prop-types';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const version = {
   edition: `${
