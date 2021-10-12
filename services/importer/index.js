@@ -1,19 +1,26 @@
 const {
   COLLECTION_TYPE,
   SINGLE_TYPE,
-} = require("../../constants/contentTypes");
-const { importToCollectionType, importToSingleType } = require("./importUtils");
+} = require('../../constants/contentTypes');
+const { importToCollectionType, importToSingleType } = require('./importUtils');
 
-function importContent(target, items, options) {
+// updated to check whether importToCollectionType shouldd create or update
+async function importContent(target, items, options) {
+
   const { uid, kind } = target;
+  const existingData = await strapi.query(uid).find({ _limit: -1 });
   switch (kind) {
     case COLLECTION_TYPE:
       return Promise.all(
         items.map((item) =>
-          importToCollectionType(uid, {
-            ...item,
-            ...options,
-          })
+          importToCollectionType(
+            uid,
+            {
+              ...item,
+              ...options,
+            },
+            existingData
+          )
         )
       );
 
@@ -24,7 +31,7 @@ function importContent(target, items, options) {
       });
 
     default:
-      throw new Error("Tipe is not supported");
+      throw new Error('Tipe is not supported');
   }
 }
 

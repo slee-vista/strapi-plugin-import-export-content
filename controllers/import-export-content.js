@@ -61,13 +61,19 @@ module.exports = {
     try {
       const service = getService();
       const results = await service.importItems(ctx);
+      console.log(results);
       const succesfully = results.every((res) => res);
+      const linesWithError = results.flatMap((line, i) =>
+        line === false ? i + 2 : []
+      );
       ctx.send({
         succesfully,
         message: succesfully
           ? 'All Data Imported'
           : results.some((res) => res)
-          ? 'Some Items Imported'
+          ? `Some Items Imported. Check the CSV file for these lines: ${linesWithError.join(
+              ', '
+            )}`
           : 'No Items Imported',
       });
     } catch (error) {

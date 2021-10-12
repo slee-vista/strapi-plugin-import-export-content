@@ -1,10 +1,35 @@
-const importToCollectionType = async (uid, item) => {
-  try {
-    await strapi.entityService.create({ data: item }, { model: uid });
-    // await strapi.query(uid).create(item);
-    return true;
-  } catch (error) {
-    return false;
+import dotenv from 'dotenv';
+
+dotenv.config();
+const uniqueIdentifier =
+  process.env.IMPORT_EXPORT_VERSION === 'Product' ? 'SKU' : 'Name';
+
+const importToCollectionType = async (uid, item, existingData) => {
+  const existingSku = existingData.find(
+    (el) => el[uniqueIdentifier] === item[uniqueIdentifier]
+  );
+
+  if (existingSku) {
+    try {
+      await strapi.entityService.update(
+        { params: { id: existingSku.id }, data: item },
+        { model: uid }
+      );
+      // await strapi.query(uid).update( , data: item },
+      //   { model: uid });
+      return true;
+    } catch (error) {
+      return false;
+    }
+  } else if (!existingSku) {
+    try {
+      await strapi.entityService.create({ data: item }, { model: uid });
+      // await strapi.query(uid).create(item);
+
+      return true;
+    } catch (error) {
+      return false;
+    }
   }
 };
 
