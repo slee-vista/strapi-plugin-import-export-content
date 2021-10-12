@@ -14,6 +14,20 @@ or
 npm i strapi-plugin-import-export-no-limit
 ```
 
+## Set environment variable & plugin config
+
+This plugin's upload functionality is to update/create. If the imported CSV or JSON contains the same data as one of the existing Collection Type documents, it will attempt to update it. If no matching document is found, the plugin will go ahead and create the new document. The config variable specified here sets whether the unique identifying field (column) is "Name", or "SKU". Future work on this plugin will make this value fully dynamic and selectable during the import process. In the meantime, set the config variable to "Content" to set the unique identifying field to "Name", or Product" to set the unique identifying field to "SKU"
+
+```javascript
+// IMPORT_EXPORT_VERSION="Content" is the default behavior.
+
+const version = env('IMPORT_EXPORT_VERSION');
+return {
+  importExport: { version },
+  // other config variables you want to pass to other plugins such as providerData for strapi-provider-upload-aws-S3
+};
+```
+
 ## Rebuild your administration panel
 
 New releases can introduce changes to the administration panel that require a rebuild. Rebuild the admin panel with one of the following commands:
@@ -57,6 +71,9 @@ npm run build -- --clean
 
 ## Acknowledgments
 
-Initially developed by: Edison Peñuela – [@EdisonPeM](https://github.com/EdisonPeM/) – edisonpe961206@hotmail.com
-
+This is a fork of the plugin initially developed by: Edison Peñuela – [@EdisonPeM](https://github.com/EdisonPeM/) – edisonpe961206@hotmail.com
 This plugin has been inspired by the tutorial [How to create an import content plugin](https://strapi.io/blog/how-to-create-an-import-content-plugin-part-1-4)
+
+## Deprecation Notes
+
+All versions below 1.1 should not be used. Please update to the latest version.
