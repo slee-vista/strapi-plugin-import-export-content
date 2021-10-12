@@ -56,7 +56,10 @@ function Layout({ navLinks, children }) {
               unique.
             </li>
             <li>Make sure the encoding type of the CSV is utf-8</li>
-            <li>Make sure there is no column labeled "id" in the CSV. </li>
+            <li>
+              If you are using the import to update documents, make sure there
+              is no column labeled "id" in the CSV.
+            </li>
           </ul>
         </p>
       </div>
