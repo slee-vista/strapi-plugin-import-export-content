@@ -1,6 +1,5 @@
-import dotenv from 'dotenv';
+require('dotenv').config();
 
-dotenv.config();
 const uniqueIdentifier =
   process.env.IMPORT_EXPORT_VERSION === 'Product' ? 'SKU' : 'Name';
 
