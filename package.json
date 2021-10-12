@@ -18,9 +18,9 @@
     "prismjs": "^1.23.0",
     "react-simple-code-editor": "^0.11.0"
   },
-  "author": "Sung Woo Lee <slee@vistaitgorup.com>",
+  "author": "Sung Woo Lee <slee@vistaitgroup.com>",
   "maintainers": [
-    "Sung Woo Lee <slee@vistaitgorup.com>"
+    "Sung Woo Lee <slee@vistaitgroup.com>"
   ],
   "engines": {
     "node": ">=10.16.0 <=14.x.x",
