@@ -35,10 +35,10 @@ function Layout({ navLinks, children }) {
           published documents.
         </p>
         <p>
-          This feature is built to update or create documents based on whether
-          the "{version.uniqueIdentifier}" column can be found in the Content
-          Type. This will be further developed so that the unique identifying
-          column can be selected during import.
+          This feature is built to update or create documents based on whether a
+          column named <strong>"{version.uniqueIdentifier}"</strong> can be
+          found in the Content Type. This will be further developed so that the
+          unique identifying column can be selected during import.
         </p>
         <p>
           A brief error message will show lines that need fixing. This feature
@@ -49,11 +49,14 @@ function Layout({ navLinks, children }) {
           <ul>
             <li>
               Numbers should be whole or decimal numbers without currency signs,
-              parentheses, etc.{' '}
+              parentheses, etc.
             </li>
-            <li>The {version.uniqueIdentifier} field must be unique.</li>
+            <li>
+              The <strong>{version.uniqueIdentifier}</strong> field must be
+              unique.
+            </li>
             <li>Make sure the encoding type of the CSV is utf-8</li>
-            <li>Make sure there is no column labeled id in the CSV. </li>
+            <li>Make sure there is no column labeled "id" in the CSV. </li>
           </ul>
         </p>
       </div>

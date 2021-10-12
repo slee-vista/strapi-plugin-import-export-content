@@ -61,7 +61,6 @@ module.exports = {
     try {
       const service = getService();
       const results = await service.importItems(ctx);
-      console.log(results);
       const succesfully = results.every((res) => res);
       const linesWithError = results.flatMap((line, i) =>
         line === false ? i + 2 : []

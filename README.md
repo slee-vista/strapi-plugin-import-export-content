@@ -30,10 +30,10 @@ npm run build -- --clean
 
 ## Features
 
-- Limit of documents queried set to -1 (infinite).
+- Limit of documents queried for exports set to -1 (infinite).
 - Short error message showing which lines in CSV were problematic. Enhancements for this error handler is in the works.
 - Upload will now first check to update any existing values based on the Name or SKU unique identifier.
-- Set IMPORT_EXPORT_VERSION to "Product" or "Content" to set the update/create feature's unique identifier column to "Name" or "SKU". There will be future work to make this value dynamic.
+- Set environment variable IMPORT_EXPORT_VERSION to "Product" or "Content" to set the update/create feature's unique identifier column to "SKU" or "Name". There will be future work to make this value dynamic.
 
 ### Import
 

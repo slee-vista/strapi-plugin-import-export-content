@@ -1,12 +1,12 @@
 {
   "name": "strapi-plugin-import-export-no-limit",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "This is a plugin for import and export content of collection types.",
   "license": "MIT",
   "strapi": {
     "name": "Import / Export Content",
     "icon": "sync-alt",
-    "description": "Import and Export your Content"
+    "description": "Import and Export your Content in Strapi"
   },
   "scripts": {
     "test": "echo \"No test specified\""
