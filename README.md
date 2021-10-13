@@ -72,6 +72,7 @@ npm run build -- --clean
 ## Acknowledgments
 
 This is a fork of the plugin initially developed by: Edison Peñuela – [@EdisonPeM](https://github.com/EdisonPeM/) – edisonpe961206@hotmail.com
+
 This plugin has been inspired by the tutorial [How to create an import content plugin](https://strapi.io/blog/how-to-create-an-import-content-plugin-part-1-4)
 
 ## Deprecation Notes
