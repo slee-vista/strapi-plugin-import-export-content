@@ -1,35 +1,28 @@
 import { HeaderNav, PluginHeader } from 'strapi-helper-plugin';
-import React, { memo } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
 
-const CMSversion = {
-  edition: `${
-    process.env.IMPORT_EXPORT_VERSION
-      ? process.env.IMPORT_EXPORT_VERSION
-      : 'Content'
-  } CMS Edition`,
-  uniqueIdentifier:
-    process.env.IMPORT_EXPORT_VERSION === 'Product'
-      ? 'SKU'
-      : process.env.IMPORT_EXPORT_VERSION === 'Content'
-      ? 'Name'
-      : 'Name',
-};
-
 function Layout({ navLinks, children, version }) {
-  const cmsVersion = {
-    version: version,
-    uniqueIdentifier:
-      version === 'Product' ? 'SKU' : version === 'Content' ? 'Name' : 'Name',
+  const [edition, setEdition] = useState('Content');
+  const [uniqueIdentifier, setUniqueIdentifier] = useState('Name');
+
+  const getIdentifier = (versionProp) => {
+    const uid = versionProp === 'Products' ? 'SKU' : 'Name';
+    return uid;
   };
+
+  useEffect(() => {
+    setEdition(version);
+    const uid = getIdentifier(version);
+
+    setUniqueIdentifier(uid);
+  }, [version]);
 
   return (
     <div className='container-fluid' style={{ padding: '18px 30px' }}>
       <PluginHeader
-        title={`Import/Export Content - ${
-          cmsVersion.version ? cmsVersion.version : 'Content'
-        } CMS Edition`}
+        title={`${edition} CMS Edition`}
         description='Import and export CSV and JSON into your Content Types.'
       />
       <div>
@@ -41,9 +34,9 @@ function Layout({ navLinks, children, version }) {
         </p>
         <p>
           This feature is built to update or create documents based on whether a
-          column named <strong>"{cmsVersion.uniqueIdentifier}"</strong> can be
-          found in the Content Type. This will be further developed so that the
-          unique identifying column can be selected during import.
+          column named <strong>"{uniqueIdentifier}"</strong> can be found in the
+          Content Type. This will be further developed so that the unique
+          identifying column can be selected during import.
         </p>
         <p>
           A brief error message will show lines that need fixing. This feature
@@ -57,8 +50,7 @@ function Layout({ navLinks, children, version }) {
               parentheses, etc.
             </li>
             <li>
-              The <strong>"{cmsVersion.uniqueIdentifier}"</strong> field must be
-              unique.
+              The <strong>"{uniqueIdentifier}"</strong> field must be unique.
             </li>
             <li>Make sure the encoding type of the CSV is utf-8</li>
             <li>

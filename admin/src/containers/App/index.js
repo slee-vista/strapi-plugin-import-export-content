@@ -39,10 +39,7 @@ function App() {
     const { data } = await request(`/${pluginId}/get-version`, {
       method: 'GET',
     });
-
     setVersion(data);
-    console.log('getversion function');
-    console.log(data);
   };
   useEffect(() => {
     setCmsVersion();
