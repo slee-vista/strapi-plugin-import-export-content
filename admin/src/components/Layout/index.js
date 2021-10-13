@@ -8,7 +8,7 @@ function Layout({ navLinks, children, version }) {
   const [uniqueIdentifier, setUniqueIdentifier] = useState('Name');
 
   const getIdentifier = (versionProp) => {
-    const uid = versionProp === 'Products' ? 'SKU' : 'Name';
+    const uid = versionProp === 'Product' ? 'SKU' : 'Name';
     return uid;
   };
 
