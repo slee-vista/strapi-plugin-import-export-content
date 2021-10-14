@@ -41,7 +41,7 @@ IMPORT_EXPORT_VERSION=Product
 You know, the one at ./config/plugin.js
 
 ```javascript
-// IMPORT_EXPORT_VERSION="Content" is the default behavior.
+// IMPORT_EXPORT_VERSION=Content is the default behavior.
 
 const version = env('IMPORT_EXPORT_VERSION');
 return {
