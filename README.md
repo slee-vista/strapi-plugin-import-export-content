@@ -16,7 +16,29 @@ npm i strapi-plugin-import-export-no-limit
 
 ## Set environment variable & plugin config
 
-This plugin's upload functionality is to update/create. If the imported CSV or JSON contains the same data as one of the existing Collection Type documents, it will attempt to update it. If no matching document is found, the plugin will go ahead and create the new document. The config variable specified here sets whether the unique identifying field (column) is "Name", or "SKU". Future work on this plugin will make this value fully dynamic and selectable during the import process. In the meantime, set the config variable to "Content" to set the unique identifying field to "Name", or Product" to set the unique identifying field to "SKU"
+This plugin's upload functionality is to update/create. If the imported CSV or JSON contains the same data as one of the existing Collection Type documents, it will attempt to update it. If no matching document is found, the plugin will go ahead and create the new document. The config variable specified here sets whether the target document's unique identifying field (column) is "Name", or "SKU".
+
+Future work on this plugin will make this value fully dynamic and selectable during the import process.
+In the meantime, set the config variable to "Content" to set the unique identifying field to "Name", or Product" to set the unique identifying field to "SKU"
+
+### Add this variable to your .env
+
+Make sure the variable is "Content" or "Product"
+If deploying through something like Heroku, set it as one of your variables in the admin panel.
+
+```
+IMPORT_EXPORT_VERSION=Content
+```
+
+or
+
+```
+IMPORT_EXPORT_VERSION=Product
+```
+
+### Add this to your plugin.js file
+
+You know, the one at ./config/plugin.js
 
 ```javascript
 // IMPORT_EXPORT_VERSION="Content" is the default behavior.
