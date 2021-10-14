@@ -1,7 +1,7 @@
 {
   "name": "strapi-plugin-import-export-no-limit",
   "version": "1.1.5",
-  "description": "This is a plugin for import and export content of collection types.",
+  "description": "This is a plugin to import and export content of collection types. No limit on the number of documents exported!",
   "license": "MIT",
   "strapi": {
     "name": "Import / Export Content",
